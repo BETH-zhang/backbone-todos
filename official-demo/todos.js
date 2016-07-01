@@ -97,9 +97,12 @@
  		clear: function(){
  			// console.log('--', this.model);
  			this.model.destroy();
+ 			return false;
  		}
  	});
 
+
+// console.log("$('#stats-template').html()", $('#stats-template').html());
 	var AppView = Backbone.View.extend({
 		el: $('#todoapp'),
 		statsTemplate: _.template($('#stats-template').html()),
@@ -152,8 +155,10 @@
 			this.input.val('');
 		},
 		clearCompleted: function(){
+			console.log('_', _);
+			// console.log('Todos.done()', Todos.done());
 			_.invoke(Todos.done(), 'destroy');
-			return false;
+			// return false;
 		},
 		toggleAllComplete: function(){
 			var done = this.allCheckbox.checked;
